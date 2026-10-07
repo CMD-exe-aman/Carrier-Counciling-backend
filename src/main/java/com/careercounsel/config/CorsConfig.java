@@ -16,7 +16,7 @@ public class CorsConfig {
         config.setAllowCredentials(true);
 
         // ✅ FIXED (NO *)
-        config.addAllowedOrigin("http://localhost:5173");
+        config.addAllowedOrigin("https://caecarcon.netlify.app/");
 
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
