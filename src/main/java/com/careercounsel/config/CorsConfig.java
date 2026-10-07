@@ -2,8 +2,11 @@ package com.careercounsel.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.*;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 public class CorsConfig {
@@ -13,13 +16,20 @@ public class CorsConfig {
 
         CorsConfiguration config = new CorsConfiguration();
 
+        config.setAllowedOrigins(List.of(
+                "https://caecarcon.netlify.app"
+        ));
+
+        config.setAllowedMethods(List.of(
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "OPTIONS"
+        ));
+
+        config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
-
-        // ✅ FIXED (NO *)
-        config.addAllowedOrigin("https://caecarcon.netlify.app/");
-
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
